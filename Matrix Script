@@ -1,0 +1,47 @@
+Question
+To decode the script, Neo needs to read each column and select only the alphanumeric characters and connect them. Neo reads the column from top to bottom and starts reading from the leftmost column.
+If there are symbols or spaces between two alphanumeric characters of the decoded script, then Neo replaces them with a single space ' ' for better readability. 
+Neo feels that there is no need to use 'if' conditions for decoding.
+Alphanumeric characters consist of: [A-Z, a-z, and 0-9].
+
+Input Format
+The first line contains space-separated integers (rows) and (columns) respectively. 
+The next lines contain the row elements of the matrix script. 
+Constraints
+
+Output Format
+Print the decoded matrix script.
+
+Sample Input 
+7 3
+Tsi
+h%x
+i #
+sM 
+$a 
+#t%
+ir!
+
+Sample Output 
+This is Matrix#  %!
+
+Solution:
+# import all the required libraries
+import math
+import os
+import random
+import re
+import sys
+
+nm = input().split() #split the given input and store in an array
+n = int(nm[0]) #'n' represents the number of rows
+m = int(nm[1]) #'m' represents the number of columns
+matrix = []
+string = ''
+for _ in range(n): #read the inputs from the user
+    matrix_item = input()
+    matrix.append(matrix_item)
+for j in range(m): #format the elements of the array
+    for i in range(n):
+        string = string + matrix[i][j]
+print(re.sub(r'\b[^a-zA-Z0-9]+\b', r' ',string)) #using regular expressions implement the logic
